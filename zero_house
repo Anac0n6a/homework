@@ -1,0 +1,27 @@
+def for_input():
+    street_distance = int(input())
+    street = [int(num) for num in input().split(' ')]
+    return street_distance, street
+def house_calc():
+    street_distance, street = for_input()
+    distance = []
+    zero = None
+    for i, y in enumerate(street):
+        if y == 0:
+            zero = i
+            distance.append(0)
+            continue
+        if (y != 0 and zero != None):
+            distance.append(i - zero)
+        else:
+            distance.append(street_distance)
+    zero = None
+    for i, y in reversed(list(enumerate(street))):
+        if y == 0:
+            zero = i
+            continue
+        if (y != 0 and zero != None and distance[i] > zero - i):
+            distance[i] = (zero - i)
+    print(*distance)
+if __name__ == '__main__':
+    house_calc()
