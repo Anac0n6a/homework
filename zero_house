@@ -1,3 +1,4 @@
+#86744240 - id решения на контексте
 def for_input():
     street_distance = int(input())
     street = [int(num) for num in input().split(' ')]
