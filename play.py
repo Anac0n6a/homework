@@ -1,34 +1,20 @@
-#86746087 -id решения на контексте
+#86779130 -id решения на контексте
 ROWS = 4
 PLAYERS = 2
 
 
-def typing_trainer(k, digits) -> int:
+def typing_trainer(keys: int, digits: str) -> int:
     dicts = {}
     for num in digits:
         dicts[num] = dicts.get(num, 0) + 1
     result = 0
     for num in dicts.values():
-        if num <= k * PLAYERS:
+        if num <= keys * PLAYERS:
             result += 1
     return result
 
-
-def read_input():
-    digits = ''
-    k = int(input())
-    for _ in range(ROWS):
-        for c in input():
-            if c.isdigit():
-                digits += c
-    return k, digits
-
-
-def main():
-    k, digits = read_input()
-    result = typing_trainer(k, digits)
-    print(result)
-
-
 if __name__ == '__main__':
-    main()
+    keys = int(input())
+    matrix = [i for i in range(4) for i in input().strip() if i.isdigit()]
+    result = typing_trainer(keys, matrix)
+    print(result)
